@@ -72,27 +72,7 @@ print(potencia)"""
         
 resultado = decimal_a_binario(13)
 print(resultado)"""
-
-
-def bynary(n, depth=0):
-    indent = " " * depth
-
-    print(f"{indent} bynary ({n}) called.")
-
-    if n == 0:
-        print(f"{indent} reached the base case, returning ''.")
-        return ''
-    else:
-        result = bynary(n // 2, depth + 1)
-
-        bit = str(n%2)
-
-        full = result + bit
-
-        print(f"{indent} Returning: '{result} + '{bit} = '{full}")
-        return full
-
-print("Final binary " , bynary(13))        
+ 
 
 # 5) Implementá una función recursiva llamada es_palindromo(palabra) que reciba una 
 # cadena de texto sin espacios ni tildes, y devuelva True si es un palíndromo o False si no 
@@ -100,10 +80,19 @@ print("Final binary " , bynary(13))
 #  Requisitos:
 # La solución debe ser recursiva.
 # No se debe usar [::-1] ni la función reversed().
+"""
+def is_palindromo(palabra):
+    if len(palabra) == 0 or len(palabra) == 1:
+        return True
 
+    if palabra[0] != palabra[-1]:
+        return False
 
+    return is_palindromo(palabra[1:-1])
 
+es_palindromo = is_palindromo("holaloh")
 
+print(es_palindromo)"""
 
 # 6) Escribí una función recursiva en Python llamada suma_digitos(n) que reciba un 
 # número entero positivo y devuelva la suma de todos sus dígitos.
@@ -115,10 +104,17 @@ print("Final binary " , bynary(13))
 # suma_digitos(9) → 9
 # suma_digitos(305) → 8 (3 + 0 + 5)
 
+"""def suma_digitos(n):
+    if n < 1:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return n % 10 + suma_digitos(n // 10)
 
-
-
-
+digitos_sumados = suma_digitos(1234)
+print(digitos_sumados)
+"""
 # 7) Un niño está construyendo una pirámide con bloques. En el nivel más bajo coloca n 
 # bloques, en el siguiente nivel uno menos (n - 1), y así sucesivamente hasta llegar al 
 # último nivel con un solo bloque.
@@ -129,9 +125,16 @@ print("Final binary " , bynary(13))
 # contar_bloques(1) → 1 (1)
 # contar_bloques(2) → 3 (2 + 1)
 # contar_bloques(4) → 10 (4 + 3 + 2 + 1)
+"""
+def contar_bloques(n):
+    if n == 1:
+        return 1
+    else:
+        return n + contar_bloques(n-1)
 
+suma_bloques = contar_bloques(15)
 
-
+print(suma_bloques)"""
 
 
 # 8) Escribí una función recursiva llamada contar_digito(numero, digito) que reciba un 
@@ -140,3 +143,15 @@ print("Final binary " , bynary(13))
 #  Ejemplos:
 # contar_digito(12233421, 2) → 3 
 # contar_digito(5555, 5) → 4 
+
+def contar_digito(numero, digito):
+    numero = str(numero)
+    digito = str(digito)
+    if numero == 1:
+        return 1
+    #elif digito == numero[len(numero) - 1]:
+    return digito + contar_digito(numero[1:-1])
+         
+
+contar = contar_digito(111,1)
+print(contar)
