@@ -153,7 +153,5 @@ def contar_digito(numero , digito):
         else:
             return contar_digito(numero // 10, digito)
 
-
-
 recurrencia = contar_digito(12321, 2)
-print(recurrencia)
+print(f"El numero con mayor recurrencia es: {recurrencia}")
