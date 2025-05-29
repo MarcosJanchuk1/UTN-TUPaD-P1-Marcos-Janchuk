@@ -144,14 +144,16 @@ print(suma_bloques)"""
 # contar_digito(12233421, 2) → 3 
 # contar_digito(5555, 5) → 4 
 
-def contar_digito(numero, digito):
-    numero = str(numero)
-    digito = str(digito)
-    if numero == 1:
-        return 1
-    #elif digito == numero[len(numero) - 1]:
-    return digito + contar_digito(numero[1:-1])
-         
+def contar_digito(numero , digito):
+    if numero == 0:
+        return 0
+    else:
+        if numero % 10 == digito:
+            return 1 + contar_digito(numero // 10, digito)
+        else:
+            return contar_digito(numero // 10, digito)
 
-contar = contar_digito(111,1)
-print(contar)
+
+
+recurrencia = contar_digito(12321, 2)
+print(recurrencia)
